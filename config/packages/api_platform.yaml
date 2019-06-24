@@ -1,0 +1,28 @@
+api_platform:
+    title: 'DaylizApi'
+    description: "API pour l'application Dayliz"
+
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+
+    eager_loading:
+        enabled: false
+        force_eager: false
+        max_joins: 1
+
+    formats:
+        jsonld:   ['application/ld+json']
+        jsonhal:  ['application/hal+json']
+        jsonapi:  ['application/vnd.api+json']
+        json:     ['application/json']
+        xml:      ['application/xml', 'text/xml']
+        yaml:     ['application/x-yaml']
+        csv:      ['text/csv']
+        html:     ['text/html']
+        myformat: ['application/vnd.myformat']
+
+    swagger:
+        api_keys:
+            apiKey:
+                name: Authorization
+                type: header
