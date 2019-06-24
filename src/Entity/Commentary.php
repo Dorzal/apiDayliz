@@ -13,6 +13,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\CommentaryRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Commentary
 {
@@ -29,7 +30,7 @@ class Commentary
     private $content;
 
     /**
-     * @Gedmo\Timestampable(on="created")
+     *
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -72,11 +73,12 @@ class Commentary
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    /**
+     * @ORM\PrePersist()
+     */
+    public function setCreatedAt()
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
+        $this->createdAt = new \DateTime();
     }
 
     public function getModifiedAt(): ?\DateTimeInterface
@@ -84,11 +86,13 @@ class Commentary
         return $this->modifiedAt;
     }
 
-    public function setModifiedAt(\DateTimeInterface $modifiedAt): self
+    /**
+     * @Orm\PreUpdate()
+     */
+    public function setModifiedAt()
     {
-        $this->modifiedAt = $modifiedAt;
+        $this->modifiedAt = new \DateTime();
 
-        return $this;
     }
 
     public function getProduct(): ?Product

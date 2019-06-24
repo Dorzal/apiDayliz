@@ -25,7 +25,6 @@ class ProductFixtures extends Fixture
         $product = new Product();
         $product->setName('product-test');
         $product->setDescription('description-test');
-        $product->setCreatedAt(new \DateTime());
         $product->setPicture('picture-test');
         $product->setPrice('35.99');
         $product->setUrl('www.test.fr');
@@ -42,7 +41,6 @@ class ProductFixtures extends Fixture
         $product1 = new Product();
         $product1->setName('product-test1');
         $product1->setDescription('description-test');
-        $product1->setCreatedAt(new \DateTime());
         $product1->setPicture('picture-test');
         $product1->setPrice('35.99');
         $product1->setUrl('www.test.fr');
@@ -58,7 +56,6 @@ class ProductFixtures extends Fixture
         $product2 = new Product();
         $product2->setName('product-test2');
         $product2->setDescription('description-test');
-        $product2->setCreatedAt(new \DateTime());
         $product2->setPicture('picture-test');
         $product2->setPrice('35.99');
         $product2->setUrl('www.test.fr');('www.test.fr');

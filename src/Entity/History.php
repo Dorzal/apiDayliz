@@ -12,6 +12,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\HistoryRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class History
 {
@@ -42,11 +43,13 @@ class History
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    /**
+     * @ORM\Prepersist()
+     */
+    public function setCreatedAt()
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt = new \DateTime();
 
-        return $this;
     }
 
     public function getUser(): ?User

@@ -36,7 +36,6 @@ class UserFixtures extends Fixture
         $user->setLastName('ln-test');
         $user->setRoles($roles);
         $user->setAvatar("avatar.jpeg");
-        $user->setCreatedAt(new \DateTime());
         $user->setBirthday(new \DateTime());
         $user->setPassword($this->passwordEncoder->encodePassword($user, 'password-test'));
         $user->addInterest($this->getReference(SubCategoryFixtures::PRODUCT_REFERENCE));
@@ -57,7 +56,6 @@ class UserFixtures extends Fixture
         $user1->setLastName('ln-test');
         $user1->setRoles($roles);
         $user1->setAvatar("avatar.jpeg");
-        $user1->setCreatedAt(new \DateTime());
         $user1->setBirthday(new \DateTime());
         $user1->setPassword($this->passwordEncoder->encodePassword($user1, 'password-test'));
         $user1->addInterest($this->getReference(SubCategoryFixtures::PRODUCT_REFERENCE1));
@@ -79,7 +77,6 @@ class UserFixtures extends Fixture
         $user2->setLastName('ln-test');
         $user2->setRoles($roles);
         $user2->setAvatar("avatar.jpeg");
-        $user2->setCreatedAt(new \DateTime());
         $user2->setBirthday(new \DateTime());
         $user2->setPassword($this->passwordEncoder->encodePassword($user2, 'password-test'));
         $user2->addInterest($this->getReference(SubCategoryFixtures::PRODUCT_REFERENCE2));

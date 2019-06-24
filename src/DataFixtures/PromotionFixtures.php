@@ -25,7 +25,6 @@ class PromotionFixtures extends Fixture
         $promotion = new Promotion();
         $promotion->setCode('code-test');
         $promotion->setPercent(5);
-        $promotion->setCreatedAt(new \DateTime());
         $promotion->setProduct($this->getReference(ProductFixtures::PRODUCT_REFERENCE));
         $manager->persist($promotion);
         $manager->flush();
@@ -35,7 +34,6 @@ class PromotionFixtures extends Fixture
         $promotion1 = new Promotion();
         $promotion1->setCode('code-test1');
         $promotion1->setPercent(5);
-        $promotion1->setCreatedAt(new \DateTime());
         $promotion1->setProduct($this->getReference(ProductFixtures::PRODUCT_REFERENCE1));
         $manager->persist($promotion1);
         $manager->flush();
@@ -45,7 +43,6 @@ class PromotionFixtures extends Fixture
         $promotion2 = new Promotion();
         $promotion2->setCode('code-test2');
         $promotion2->setPercent(5);
-        $promotion2->setCreatedAt(new \DateTime());
         $promotion2->setProduct($this->getReference(ProductFixtures::PRODUCT_REFERENCE2));
         $manager->persist($promotion2);
         $manager->flush();

@@ -13,6 +13,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\PromotionRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Promotion
 {
@@ -34,8 +35,8 @@ class Promotion
     private $percent;
 
     /**
-     * @Gedmo\Timestampable(on="created")
-     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $createdAt;
 
@@ -78,9 +79,13 @@ class Promotion
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    /**
+     * @ORM\PrePersist()
+     */
+    public function setCreatedAt()
     {
-        $this->createdAt = $createdAt;
+
+        $this->createdAt = new \DateTime();
 
         return $this;
     }

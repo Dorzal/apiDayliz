@@ -24,7 +24,6 @@ class CommentaryFixtures extends Fixture
     {
         $comment = new Commentary();
         $comment->setContent('test-content');
-        $comment->setCreatedAt(new \DateTime());
         $manager->persist($comment);
         $manager->flush();
 
@@ -32,7 +31,6 @@ class CommentaryFixtures extends Fixture
 
         $comment1 = new Commentary();
         $comment1->setContent('test-content1');
-        $comment1->setCreatedAt(new \DateTime());
         $manager->persist($comment1);
         $manager->flush();
 
@@ -40,7 +38,6 @@ class CommentaryFixtures extends Fixture
 
         $comment2 = new Commentary();
         $comment2->setContent('test-content2');
-        $comment2->setCreatedAt(new \DateTime());
         $manager->persist($comment2);
         $manager->flush();
 
