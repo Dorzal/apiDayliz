@@ -72,13 +72,13 @@ class User implements UserInterface
     private $birthday;
 
     /**
-     * @ApiSubresource(maxDepth=1)
+     * @ApiSubresource()
      * @ORM\ManyToMany(targetEntity="App\Entity\SubCategory", inversedBy="users")
      */
     private $interest;
 
     /**
-     * @ApiSubresource(maxDepth=1)
+     * @ApiSubresource()
      * @ORM\ManyToMany(targetEntity="App\Entity\Product", inversedBy="users")
      */
     private $likeProduct;
@@ -89,7 +89,7 @@ class User implements UserInterface
     private $Premium;
 
     /**
-     * @ApiSubresource(maxDepth=1)
+     * @ApiSubresource()
      * @ORM\OneToMany(targetEntity="App\Entity\History", mappedBy="user")
      */
     private $history;

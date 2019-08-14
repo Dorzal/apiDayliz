@@ -5,11 +5,6 @@ api_platform:
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
 
-    eager_loading:
-        enabled: false
-        force_eager: false
-        max_joins: 1
-
     formats:
         jsonld:   ['application/ld+json']
         jsonhal:  ['application/hal+json']

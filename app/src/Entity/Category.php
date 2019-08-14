@@ -36,7 +36,7 @@ class Category
     private $logo;
 
     /**
-     * @ApiSubresource(maxDepth=1)
+     * @ApiSubresource()
      * @ORM\OneToMany(targetEntity="App\Entity\SubCategory", mappedBy="category")
      */
     private $subCategories;

@@ -41,7 +41,7 @@ class SubCategory
     private $category;
 
     /**
-     * @ApiSubresource(maxDepth=1)
+     * @ApiSubresource()
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="subCategory")
      */
     private $products;
