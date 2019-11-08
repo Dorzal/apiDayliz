@@ -5,9 +5,11 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *     normalizationContext={"groups"={"commentary:output"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -25,28 +27,32 @@ class Commentary
     private $id;
 
     /**
+     * @Groups({"commentary:output"})
      * @ORM\Column(type="string", length=500)
      */
     private $content;
 
     /**
-     *
+     * @Groups({"commentary:output"})
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
+     * @Groups({"commentary:output"})
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $modifiedAt;
 
     /**
+     * @Groups({"commentary:output"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Product", inversedBy="commentaries")
      */
     private $product;
 
     /**
+     * @Groups({"commentary:output"})
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="commentary")
      */
     private $userCommentary;

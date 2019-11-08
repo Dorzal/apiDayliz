@@ -9,9 +9,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *     normalizationContext={"groups"={"user:output"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -23,6 +25,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 class User implements UserInterface
 {
     /**
+     * @Groups({"user:output"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -30,72 +33,81 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @Groups({"user:output"})
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
 
     /**
+     * @Groups({"user:output"})
      * @ORM\Column(type="json")
      */
     private $roles = [];
 
     /**
+     * @Groups({"user:output"})
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
 
     /**
+     * @Groups({"user:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $firstName;
 
     /**
+     * @Groups({"user:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $lastName;
 
     /**
+     * @Groups({"user:output"})
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
+     * @Groups({"user:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $avatar;
 
     /**
+     * @Groups({"user:output"})
      * @ORM\Column(type="date")
      */
     private $birthday;
 
     /**
-     * @ApiSubresource()
+     * @Groups({"user:output"})
      * @ORM\ManyToMany(targetEntity="App\Entity\SubCategory", inversedBy="users")
      */
     private $interest;
 
     /**
-     * @ApiSubresource()
+     * @Groups({"user:output"})
      * @ORM\ManyToMany(targetEntity="App\Entity\Product", inversedBy="users")
      */
     private $likeProduct;
 
     /**
+     * @Groups({"user:output"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Premium", inversedBy="users")
      */
     private $Premium;
 
     /**
-     * @ApiSubresource()
+     * @Groups({"user:output"})
      * @ORM\OneToMany(targetEntity="App\Entity\History", mappedBy="user")
      */
     private $history;
 
     /**
-     * @ApiSubresource(maxDepth=1)
+     * @Groups({"user:output"})
      * @ORM\OneToMany(targetEntity="App\Entity\Commentary", mappedBy="userCommentary")
      */
     private $commentary;

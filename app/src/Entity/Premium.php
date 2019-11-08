@@ -6,9 +6,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *     normalizationContext={"groups"={"premia:output"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -18,6 +20,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 class Premium
 {
     /**
+     * @Groups({"premia:output"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -25,31 +28,37 @@ class Premium
     private $id;
 
     /**
+     * @Groups({"premia:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Groups({"premia:output"})
      * @ORM\Column(type="integer")
      */
     private $time;
 
     /**
+     * @Groups({"premia:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $price;
 
     /**
+     * @Groups({"premia:output"})
      * @ORM\Column(type="string", length=500)
      */
     private $description;
 
     /**
+     * @Groups({"premia:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $logo;
 
     /**
+     * @Groups({"premia:output"})
      * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="Premium")
      */
     private $users;

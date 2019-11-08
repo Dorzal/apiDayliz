@@ -4,9 +4,11 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *     normalizationContext={"groups"={"history:output"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -17,6 +19,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 class History
 {
     /**
+     * @Groups({"history:output"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -24,11 +27,13 @@ class History
     private $id;
 
     /**
+     * @Groups({"history:output"})
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
+     * @Groups({"history:output"})
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="history")
      */
     private $user;

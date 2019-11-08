@@ -7,9 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *     normalizationContext={"groups"={"mark:output"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -19,6 +21,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 class Mark
 {
     /**
+     * @Groups({"mark:output"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -26,22 +29,25 @@ class Mark
     private $id;
 
     /**
+     * @Groups({"mark:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Groups({"mark:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $logo;
 
     /**
+     * @Groups({"mark:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $url;
 
     /**
-     * @ApiSubresource(maxDepth=1)
+     * @Groups({"mark:output"})
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="mark")
      */
     private $products;

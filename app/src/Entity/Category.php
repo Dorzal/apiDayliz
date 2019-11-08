@@ -7,9 +7,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *     normalizationContext={"groups"={"category:output"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -19,6 +21,7 @@ use ApiPlatform\Core\Annotation\ApiSubresource;
 class Category
 {
     /**
+     * @Groups({"category:output"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -26,17 +29,19 @@ class Category
     private $id;
 
     /**
+     * @Groups({"category:output", "sub:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Groups({"category:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $logo;
 
     /**
-     * @ApiSubresource()
+     * @Groups({"category:output"})
      * @ORM\OneToMany(targetEntity="App\Entity\SubCategory", mappedBy="category")
      */
     private $subCategories;

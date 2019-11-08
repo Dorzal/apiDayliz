@@ -7,9 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *     normalizationContext={"groups"={"sub:output"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -19,6 +21,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 class SubCategory
 {
     /**
+     * @Groups({"sub:output"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -26,27 +29,31 @@ class SubCategory
     private $id;
 
     /**
+     * @Groups({"category:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Groups({"sub:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $logo;
 
     /**
+     * @Groups({"sub:output"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="subCategories")
      */
     private $category;
 
     /**
-     * @ApiSubresource()
+     * @Groups({"sub:output"})
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="subCategory")
      */
     private $products;
 
     /**
+     * @Groups({"sub:output"})
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="interest")
      */
     private $users;

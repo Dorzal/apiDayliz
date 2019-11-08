@@ -7,9 +7,11 @@ use Doctrine\Common\Collections\Collection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *     normalizationContext={"groups"={"product:output"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -20,6 +22,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 class Product
 {
     /**
+     * @Groups({"product:output"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -27,62 +30,74 @@ class Product
     private $id;
 
     /**
+     * @Groups({"sub:output", "product:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Groups({"product:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $price;
 
     /**
+     * @Groups({"sub:output", "product:output"})
      * @ORM\Column(type="date", nullable=true)
      */
     private $showAt;
 
     /**
+     * @Groups({"product:output"})
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
+     * @Groups({"product:output"})
      * @ORM\Column(type="string", length=500)
      */
     private $description;
 
     /**
+     * @Groups({"product:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $picture;
 
     /**
+     * @Groups({"sub:output", "product:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $url;
 
     /**
+     * @Groups({"product:output"})
      * @ORM\ManyToOne(targetEntity="App\Entity\SubCategory", inversedBy="products")
      */
     private $subCategory;
 
     /**
+     * @Groups({"product:output"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Mark", inversedBy="products")
      */
     private $mark;
 
     /**
+     * @Groups({"product:output"})
      * @ORM\OneToOne(targetEntity="App\Entity\Promotion", mappedBy="product", cascade={"persist", "remove"})
      */
     private $promotion;
 
     /**
+     * @Groups({"product:output"})
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="likeProduct")
      */
     private $users;
 
     /**
+     * @Groups({"product:output"})
      * @ORM\OneToMany(targetEntity="App\Entity\Commentary", mappedBy="product")
      */
     private $commentaries;
