@@ -10,6 +10,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"commentary:output"}},
+ *     denormalizationContext={"groups"={"commentary:input"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -27,13 +28,14 @@ class Commentary
     private $id;
 
     /**
-     * @Groups({"commentary:output", "product:output", "user:output"})
+     * @Groups({"commentary:output", "product:output", "user:output", "commentary:input"})
      * @ORM\Column(type="string", length=500)
      */
     private $content;
 
     /**
      * @Groups({"commentary:output", "product:output"})
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -46,13 +48,13 @@ class Commentary
     private $modifiedAt;
 
     /**
-     * @Groups({"commentary:output"})
+     * @Groups({"commentary:output", "commentary:input"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Product", inversedBy="commentaries")
      */
     private $product;
 
     /**
-     * @Groups({"commentary:output", "product:output"})
+     * @Groups({"commentary:output", "product:output", "commentary:input"})
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="commentary")
      */
     private $userCommentary;

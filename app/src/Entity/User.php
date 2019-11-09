@@ -14,6 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"user:output"}},
+ *     denormalizationContext={"groups"={"user:input"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -33,7 +34,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @Groups({"user:output", "commentary:output", "product:output", "premia:output"})
+     * @Groups({"user:output", "commentary:output", "product:output", "premia:output", "user:input"})
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -46,18 +47,19 @@ class User implements UserInterface
 
     /**
      * @var string The hashed password
+     * @Groups({"user:input"})
      * @ORM\Column(type="string")
      */
     private $password;
 
     /**
-     * @Groups({"user:output"})
+     * @Groups({"user:output", "user:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $firstName;
 
     /**
-     * @Groups({"user:output"})
+     * @Groups({"user:output", "user:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $lastName;
@@ -70,13 +72,13 @@ class User implements UserInterface
     private $createdAt;
 
     /**
-     * @Groups({"user:output"})
+     * @Groups({"user:output", "user:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $avatar;
 
     /**
-     * @Groups({"user:output"})
+     * @Groups({"user:output", "user:input"})
      * @ORM\Column(type="date")
      */
     private $birthday;

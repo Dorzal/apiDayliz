@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"premia:output"}},
+ *     denormalizationContext={"groups"={"premia:input"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -28,31 +29,31 @@ class Premium
     private $id;
 
     /**
-     * @Groups({"premia:output", "user:output"})
+     * @Groups({"premia:output", "user:output", "premia:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @Groups({"premia:output"})
+     * @Groups({"premia:output", "premia:input"})
      * @ORM\Column(type="integer")
      */
     private $time;
 
     /**
-     * @Groups({"premia:output"})
+     * @Groups({"premia:output", "premia:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $price;
 
     /**
-     * @Groups({"premia:output"})
+     * @Groups({"premia:output", "premia:input"})
      * @ORM\Column(type="string", length=500)
      */
     private $description;
 
     /**
-     * @Groups({"premia:output"})
+     * @Groups({"premia:output", "premia:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $logo;

@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"category:output"}},
+ *     denormalizationContext={"groups"={"category:input"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -29,13 +30,13 @@ class Category
     private $id;
 
     /**
-     * @Groups({"category:output", "sub:output"})
+     * @Groups({"category:output", "sub:output", "category:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @Groups({"category:output"})
+     * @Groups({"category:output", "category:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $logo;

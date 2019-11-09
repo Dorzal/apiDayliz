@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"product:output"}},
+ *     denormalizationContext={"groups"={"product:input"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -30,19 +31,19 @@ class Product
     private $id;
 
     /**
-     * @Groups({"sub:output", "product:output", "commentary:output", "user:output", "mark:output"})
+     * @Groups({"sub:output", "product:output", "commentary:output", "user:output", "mark:output", "product:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @Groups({"product:output"})
+     * @Groups({"product:output", "product:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $price;
 
     /**
-     * @Groups({"sub:output", "product:output"})
+     * @Groups({"sub:output", "product:output", "product:input"})
      * @ORM\Column(type="date", nullable=true)
      */
     private $showAt;
@@ -55,31 +56,31 @@ class Product
     private $createdAt;
 
     /**
-     * @Groups({"product:output"})
+     * @Groups({"product:output", "product:input"})
      * @ORM\Column(type="string", length=500)
      */
     private $description;
 
     /**
-     * @Groups({"product:output"})
+     * @Groups({"product:output", "product:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $picture;
 
     /**
-     * @Groups({"sub:output", "product:output"})
+     * @Groups({"sub:output", "product:output", "product:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $url;
 
     /**
-     * @Groups({"product:output"})
+     * @Groups({"product:output", "product:input"})
      * @ORM\ManyToOne(targetEntity="App\Entity\SubCategory", inversedBy="products")
      */
     private $subCategory;
 
     /**
-     * @Groups({"product:output"})
+     * @Groups({"product:output", "product:input"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Mark", inversedBy="products")
      */
     private $mark;

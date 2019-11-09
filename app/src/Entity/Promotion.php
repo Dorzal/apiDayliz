@@ -10,6 +10,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"promotion:output"}},
+ *     denormalizationContext={"groups"={"promotion:input"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -28,13 +29,13 @@ class Promotion
     private $id;
 
     /**
-     * @Groups({"promotion:output", "product:output"})
+     * @Groups({"promotion:output", "product:output", "promotion:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $code;
 
     /**
-     * @Groups({"promotion:output"})
+     * @Groups({"promotion:output", "promotion:input"})
      * @ORM\Column(type="integer")
      */
     private $percent;
@@ -47,7 +48,7 @@ class Promotion
     private $createdAt;
 
     /**
-     * @Groups({"promotion:output"})
+     * @Groups({"promotion:output", "promotion:input"})
      * @ORM\OneToOne(targetEntity="App\Entity\Product", inversedBy="promotion", cascade={"persist", "remove"})
      */
     private $product;

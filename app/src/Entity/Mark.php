@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"mark:output"}},
+ *     denormalizationContext={"groups"={"mark:input"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -29,25 +30,25 @@ class Mark
     private $id;
 
     /**
-     * @Groups({"mark:output", "product:output"})
+     * @Groups({"mark:output", "product:output", "mark:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @Groups({"mark:output"})
+     * @Groups({"mark:output", "mark:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $logo;
 
     /**
-     * @Groups({"mark:output"})
+     * @Groups({"mark:output", "mark:input"})
      * @ORM\Column(type="string", length=255)
      */
     private $url;
 
     /**
-     * @Groups({"mark:output"})
+     * @Groups({"mark:output", "mark:input"})
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="mark")
      */
     private $products;
