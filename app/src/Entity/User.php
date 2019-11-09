@@ -33,7 +33,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @Groups({"user:output"})
+     * @Groups({"user:output", "commentary:output", "product:output", "premia:output"})
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -45,7 +45,6 @@ class User implements UserInterface
     private $roles = [];
 
     /**
-     * @Groups({"user:output"})
      * @var string The hashed password
      * @ORM\Column(type="string")
      */

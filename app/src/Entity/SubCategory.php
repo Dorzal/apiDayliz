@@ -29,7 +29,7 @@ class SubCategory
     private $id;
 
     /**
-     * @Groups({"category:output"})
+     * @Groups({"category:output", "sub:output", "product:output", "user:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
@@ -53,7 +53,6 @@ class SubCategory
     private $products;
 
     /**
-     * @Groups({"sub:output"})
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="interest")
      */
     private $users;

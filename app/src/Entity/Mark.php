@@ -29,7 +29,7 @@ class Mark
     private $id;
 
     /**
-     * @Groups({"mark:output"})
+     * @Groups({"mark:output", "product:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;

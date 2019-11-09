@@ -28,7 +28,7 @@ class Premium
     private $id;
 
     /**
-     * @Groups({"premia:output"})
+     * @Groups({"premia:output", "user:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;

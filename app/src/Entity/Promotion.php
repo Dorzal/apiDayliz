@@ -28,7 +28,7 @@ class Promotion
     private $id;
 
     /**
-     * @Groups({"promotion:output"})
+     * @Groups({"promotion:output", "product:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $code;

@@ -27,13 +27,13 @@ class Commentary
     private $id;
 
     /**
-     * @Groups({"commentary:output"})
+     * @Groups({"commentary:output", "product:output", "user:output"})
      * @ORM\Column(type="string", length=500)
      */
     private $content;
 
     /**
-     * @Groups({"commentary:output"})
+     * @Groups({"commentary:output", "product:output"})
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -52,7 +52,7 @@ class Commentary
     private $product;
 
     /**
-     * @Groups({"commentary:output"})
+     * @Groups({"commentary:output", "product:output"})
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="commentary")
      */
     private $userCommentary;

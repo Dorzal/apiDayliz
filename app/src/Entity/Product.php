@@ -30,7 +30,7 @@ class Product
     private $id;
 
     /**
-     * @Groups({"sub:output", "product:output"})
+     * @Groups({"sub:output", "product:output", "commentary:output", "user:output", "mark:output"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
