@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"user:output"}},
- *     denormalizationContext={"groups"={"user:input"}},
+ *     denormalizationContext={"groups"={"user:input", "interest:input"}},
  *     attributes={
  *          "formats"={"json"}
  *     }
@@ -84,7 +84,8 @@ class User implements UserInterface
     private $birthday;
 
     /**
-     * @Groups({"user:output"})
+     * @Groups({"user:output", "interest:input"})
+     * @ApiSubresource()
      * @ORM\ManyToMany(targetEntity="App\Entity\SubCategory", inversedBy="users")
      */
     private $interest;
