@@ -21,7 +21,7 @@ class AuthController {
         if(preg_match('/^\$argon([0-9]{0,2})id\$v=[0-9]{1,10}\$m=[0-9]{1,10},t=[0-9]{1,10},p=[0-9]{1,10}\$.*/', $datas['password']) == 1) {
             return new Response('password incorrect');
         }
-        // Création du user et de la form
+        // Création du user
         try {
             $user = new User();
             $user->setEmail($datas['email']);
@@ -34,7 +34,7 @@ class AuthController {
             $this->em->persist($user);
             $this->em->flush();
 
-            $response = new Response(json_encode(["email" => $user->getEmail(), "roles" => $user->getRoles()]));
+            $response = new Response(json_encode(["email" => $user->getEmail()]));
             $response->headers->set('Content-Type', 'application/json');
 
             return $response;

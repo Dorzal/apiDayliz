@@ -50,8 +50,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *                          "schema" =  {
  *                              "type" = "object",
  *                              "properties" = {
- *                                  "email" = { "type": "string" },
- *                                  "role" = { "type": "array" },
+ *                                  "email" = { "type": "string" }
  *                              },
  *                          },
  *                      },
