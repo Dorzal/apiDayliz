@@ -17,6 +17,57 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     denormalizationContext={"groups"={"user:input", "interest:input"}},
  *     attributes={
  *          "formats"={"json"}
+ *     },
+ *     itemOperations={
+ *          "get"={"security"="is_granted('ROLE_USER')"},
+ *          "delete"={"security"="is_granted('ROLE_ADMIN')"},
+ *          "put"={"security"="is_granted('ROLE_ADMIN')"},
+ *          "patch"={"security"="is_grandted('ROLE_USER')"},
+ *          "register" = {
+ *              "method" = "POST",
+ *              "route_name" = "api_users_register",
+ *              "swagger_context" = {
+ *                  "summary" = "Register",
+ *                  "consumes" = {"application/json"},
+ *                  "produces" = {"application/json"},
+ *                  "parameters" = {
+ *                      {
+ *                          "name" = "login",
+ *                          "in" = "body",
+ *                          "required" = "true",
+ *                          "properties" = {
+ *                              "email" = { "type": "string" },
+ *                              "password" = { "type": "string" },
+ *                              "firstName" = { "type": "string" },
+ *                              "lastName" = { "type": "string" },
+ *                              "avatar" = { "type": "string" },
+ *                          }
+ *                      },
+ *                  },
+ *                  "responses" = {
+ *                      "200" = {
+ *                          "description" = "Return information regiter",
+ *                          "schema" =  {
+ *                              "type" = "object",
+ *                              "properties" = {
+ *                                  "email" = { "type": "string" },
+ *                                  "role" = { "type": "array" },
+ *                              },
+ *                          },
+ *                      },
+ *                      "401" = {
+ *                          "description" = "Bad credentials",
+ *                          "schema" =  {
+ *                              "type" = "object",
+ *                              "properties" = {
+ *                                  "code" = { "type" = "integer" },
+ *                                  "message" = { "type" = "string" },
+ *                              },
+ *                          },
+ *                      }
+ *                  }
+ *              }
+ *          }
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
