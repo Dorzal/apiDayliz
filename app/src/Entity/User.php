@@ -43,7 +43,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *                              "password" = { "type": "string" },
  *                              "firstName" = { "type": "string" },
  *                              "lastName" = { "type": "string" },
- *                              "avatar" = { "type": "string" },
  *                          }
  *                      },
  *                  },

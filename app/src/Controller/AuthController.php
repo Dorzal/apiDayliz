@@ -29,7 +29,7 @@ class AuthController {
             $user->setRoles(['ROLE_USER']);
             $user->setFirstName($datas['firstName']);
             $user->setLastName($datas['lastName']);
-            $user->setAvatar($datas['avatar']);
+            $user->setAvatar('string.png');
             $user->setBirthday(\DateTime::createFromFormat('Y-m-d', $datas['birthday']));
             $this->em->persist($user);
             $this->em->flush();
