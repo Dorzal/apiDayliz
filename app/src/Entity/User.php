@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"user:output"}},
- *     denormalizationContext={"groups"={"user:input", "interest:input"}},
+ *     denormalizationContext={"groups"={"user:input"}},
  *     attributes={
  *          "formats"={"json"}
  *     },
@@ -22,7 +22,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          "get"={"security"="is_granted('ROLE_USER')"},
  *          "delete"={"security"="is_granted('ROLE_ADMIN')"},
  *          "put"={"security"="is_granted('ROLE_ADMIN')"},
- *          "patch"={"security"="is_grandted('ROLE_USER')"},
+ *          "patch"={
+ *              "denormalization_context"={"groups"={"interest:input"}},
+ *              "security"="is_grandted('ROLE_USER')"
+ *          },
  *          "register" = {
  *              "method" = "POST",
  *              "route_name" = "api_users_register",
@@ -134,7 +137,7 @@ class User implements UserInterface
     private $birthday;
 
     /**
-     * @Groups({"user:output", "interest:input"})
+     * @Groups({"user:output", "interest:input" })
      * @ApiSubresource()
      * @ORM\ManyToMany(targetEntity="App\Entity\SubCategory", inversedBy="users")
      */
