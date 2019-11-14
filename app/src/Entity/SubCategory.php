@@ -22,7 +22,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class SubCategory
 {
     /**
-     * @Groups({"sub:output"})
+     * @Groups({"sub:output", "category:output"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")

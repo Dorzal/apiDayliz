@@ -13,3 +13,8 @@ api_users_register:
   path:     /api/users/register
   methods:  POST
   controller: App\Controller\AuthController:register
+
+api_users_search:
+  path:     /api/users/search
+  methods:  POST
+  controller: App\Controller\SearchController:search

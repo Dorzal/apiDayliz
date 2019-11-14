@@ -61,8 +61,48 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *                          "schema" =  {
  *                              "type" = "object",
  *                              "properties" = {
- *                                  "code" = { "type" = "integer" },
- *                                  "message" = { "type" = "string" },
+ *                                  "code" = { "type": "integer" },
+ *                                  "message" = { "type": "string" },
+ *                              },
+ *                          },
+ *                      }
+ *                  }
+ *              }
+ *          },
+ *          "search" = {
+ *              "method" = "POST",
+ *              "route_name" = "api_users_search",
+ *              "swagger_context" = {
+ *                  "summary" = "search",
+ *                  "consumes" = {"application/json"},
+ *                  "produces" = {"application/json"},
+ *                  "parameters" = {
+ *                      {
+ *                          "name" = "username",
+ *                          "in" = "body",
+ *                          "required" = "true",
+ *                          "properties" = {
+ *                              "email" = { "type": "string" }
+ *                          }
+ *                      },
+ *                  },
+ *                  "responses" = {
+ *                      "200" = {
+ *                          "description" = "Return information search",
+ *                          "schema" =  {
+ *                              "type" = "object",
+ *                              "properties" = {
+ *                                  "id" = { "type": "integer" }
+ *                              },
+ *                          },
+ *                      },
+ *                      "401" = {
+ *                          "description" = "No user",
+ *                          "schema" =  {
+ *                              "type" = "object",
+ *                              "properties" = {
+ *                                  "code" = { "type": "integer" },
+ *                                  "message" = { "type": "string" },
  *                              },
  *                          },
  *                      }
@@ -198,7 +238,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -225,7 +265,7 @@ class User implements UserInterface
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return (string)$this->password;
     }
 
     public function setPassword(string $password): self
