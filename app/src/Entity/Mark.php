@@ -49,6 +49,7 @@ class Mark
 
     /**
      * @Groups({"mark:output", "mark:input"})
+     * @ApiSubresource()
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="mark")
      */
     private $products;

@@ -43,6 +43,7 @@ class Category
 
     /**
      * @Groups({"category:output"})
+     * @ApiSubresource()
      * @ORM\OneToMany(targetEntity="App\Entity\SubCategory", mappedBy="category")
      */
     private $subCategories;
