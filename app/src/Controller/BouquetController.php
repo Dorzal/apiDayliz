@@ -21,16 +21,17 @@ class BouquetController
         $today = date("Y-m-d");
 
 
-        $sql = "select p.id , p.name, p.price, p.description, p.picture, p.url
-                from product as p
-                inner join sub_category as s
-                on p.id = s.id
+
+        $sql = "select p.id , p.name, p.price, p.description, p.picture, p.url, p.show_at
+                from \"user\" as u 
                 inner join user_sub_category as us
-                on s.id = us.sub_category_id
-                inner join \"user\" as u
-                on us.user_id = u.id
+                on u.id = us.user_id
+                inner join sub_category as s
+                on us.sub_category_id = s.id
+                inner join product as p
+                on s.id = p.sub_category_id
                 where u.id = $id
-                and p.show_at = '$today' ;";
+                and p.show_at = '$today'";
 
 
         $conn = $this->_em->getConnection();
