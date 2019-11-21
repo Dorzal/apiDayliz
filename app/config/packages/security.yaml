@@ -18,6 +18,11 @@ security:
         #main:
             #anonymous: true
 
+        register:
+            pattern: ^/api/users/register
+            stateless: true
+            anonymous: true
+
         login:
             pattern: ^/api/login
             stateless: true
