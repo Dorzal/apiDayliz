@@ -108,6 +108,46 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *                      }
  *                  }
  *              }
+ *          },
+ *          "bouquet" = {
+ *              "method" = "GET",
+ *              "route_name" = "api_users_bouquet",
+ *              "swagger_context" = {
+ *                  "summary" = "bouquet",
+ *                  "consumes" = {"application/json"},
+ *                  "produces" = {"application/json"},
+ *                  "parameters" = {
+ *                      {
+ *                          "name" = "bouquet",
+ *                          "in" = "header",
+ *                          "required" = "true",
+ *                          "properties" = {
+ *                              "id" = { "type": "integer" }
+ *                          }
+ *                      },
+ *                  },
+ *                  "responses" = {
+ *                      "200" = {
+ *                          "description" = "Return information search",
+ *                          "schema" =  {
+ *                              "type" = "object",
+ *                              "properties" = {
+ *                                  "products" = { "type": "Product" }
+ *                              },
+ *                          },
+ *                      },
+ *                      "401" = {
+ *                          "description" = "No user",
+ *                          "schema" =  {
+ *                              "type" = "object",
+ *                              "properties" = {
+ *                                  "code" = { "type": "integer" },
+ *                                  "message" = { "type": "string" },
+ *                              },
+ *                          },
+ *                      }
+ *                  }
+ *              }
  *          }
  *     }
  * )

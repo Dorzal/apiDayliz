@@ -18,3 +18,8 @@ api_users_search:
   path:     /api/users/search
   methods:  POST
   controller: App\Controller\SearchController:search
+
+api_users_bouquet:
+  path:     /api/users/{id}/bouquet
+  methods:  GET
+  controller: App\Controller\BouquetController:bouquet
