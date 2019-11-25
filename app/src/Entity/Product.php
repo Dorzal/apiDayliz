@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -101,6 +102,7 @@ class Product
     private $users;
 
     /**
+     * @ApiSubresource(maxDepth=2)
      * @Groups({"product:output"})
      * @ORM\OneToMany(targetEntity="App\Entity\Commentary", mappedBy="product")
      */
